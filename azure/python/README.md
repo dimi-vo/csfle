@@ -31,6 +31,8 @@ producer and consumer application with Python.
 ## Environment
 
 ```aiignore shell
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 ## Azure Key Vault

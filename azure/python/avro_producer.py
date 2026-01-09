@@ -51,22 +51,8 @@ def main():
 
     schema_registry_client = SchemaRegistryClient(schema_registry_conf)
 
-    rule = Rule(
-        "test-encrypt",
-        "",
-        RuleKind.TRANSFORM,
-        RuleMode.WRITEREAD,
-        "ENCRYPT",
-        ["PII"],
-        RuleParams({"encrypt.kek.name": kek_name, "encrypt.kms.type": kms_type, "encrypt.kms.key.id": kms_key_id}),
-        None,
-        None,
-        "ERROR,NONE",
-        False,
-    )
-
     subject = f"{topic}-value"
-    schema_registry_client.register_schema(subject, Schema(schema_str, "AVRO", [], None, RuleSet(None, [rule])))
+    schema_registry_client.register_schema(subject, Schema(schema_str, "AVRO", [], None))
 
     ser_conf = {'auto.register.schemas': False, 'use.latest.version': True}
     avro_serializer = AvroSerializer(schema_registry_client, schema_str, personal_data_to_dict, conf=ser_conf)
