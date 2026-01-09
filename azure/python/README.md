@@ -35,6 +35,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
 ## Azure Key Vault
 
 ### Azure App registration
@@ -69,6 +70,13 @@ the [documentation](https://learn.microsoft.com/en-us/azure/key-vault/general/as
 We provide "All Key Permissions" (in production we recommend following the principle of least privilege).
 
 ![](../AzureKeyAccess.png)
+
+## Register the tag
+
+We first need to create a tag on which we apply the encryption later, such as `PII`.
+As of today, we need to create the tag in the Stream Catalog first, see
+the [documentation](https://docs.confluent.io/platform/current/schema-registry/fundamentals/data-contracts.html#tags) of
+Data Contracts.
 
 ## Register Schema
 
@@ -178,7 +186,7 @@ In the logs you can see
 ```
 
 You can simulate a scenario where a client without access to the KEK consumes the sensitive data.
-Change the Client Secret string, e.g. add a character at the end, so that authentication fails. 
+Change the Client Secret string, e.g. add a character at the end, so that authentication fails.
 
 You will see some errors in the logs, but you will also see the following
 
