@@ -78,6 +78,9 @@ As of today, we need to create the tag in the Stream Catalog first, see
 the [documentation](https://docs.confluent.io/platform/current/schema-registry/fundamentals/data-contracts.html#tags) of
 Data Contracts.
 
+Go to Confluent Cloud UI. From there select your environment and navigate to Catalog Management from the left side menu.
+`Home > Environments > [Your-Environment] > Stream Governance > Catalog management > Tags > Create Tags > PII`
+
 ## Register Schema
 
 We register the schema with setting `PII` to the birthday field and defining the encryption rule
